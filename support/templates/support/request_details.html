@@ -1,0 +1,20 @@
+{% extends "support/base.html" %}
+{% load static %}
+{% block title %}Request Detail{% endblock %}
+{% block content %}
+<h2>Service Request Detail</h2>
+<p>Type: {{ service_request.service_type }}</p>
+<p>Description: {{ service_request.description }}</p>
+<p>Status: {{ service_request.status }}</p>
+<p>Submitted: {{ service_request.created_at }}</p>
+<form method="post">
+    {% csrf_token %}
+    <label for="status">Update Status:</label>
+    <select name="status" id="status">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Resolved">Resolved</option>
+    </select>
+    <button type="submit">Update</button>
+</form>
+{% endblock %}

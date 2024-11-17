@@ -1,0 +1,26 @@
+{% extends "customers/base.html" %}
+{% load static %}
+{% block title %}Track Request{% endblock %}
+{% block content %}
+<h2>Your Service Requests</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Submitted</th>
+            <th>Resolved</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request.service_type }}</td>
+            <td>{{ request.status }}</td>
+            <td>{{ request.created_at }}</td>
+            <td>{{ request.resolved_at|default:"N/A" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

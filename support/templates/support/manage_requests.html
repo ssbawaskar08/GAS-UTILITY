@@ -1,0 +1,24 @@
+{% extends "support/base.html" %}
+{% load static %}
+{% block title %}Manage Requests{% endblock %}
+{% block content %}
+<h2>All Service Requests</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request.service_type }}</td>
+            <td>{{ request.status }}</td>
+            <td><a href="{% url 'request_detail' request.id %}">View</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
